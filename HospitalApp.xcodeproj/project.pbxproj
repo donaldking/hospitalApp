@@ -13,7 +13,6 @@
 		C26BB15023DE08E100C9001D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C26BB14E23DE08E100C9001D /* Main.storyboard */; };
 		C26BB15223DE08E400C9001D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C26BB15123DE08E400C9001D /* Assets.xcassets */; };
 		C26BB15523DE08E400C9001D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C26BB15323DE08E400C9001D /* LaunchScreen.storyboard */; };
-		C26BB16023DE08E400C9001D /* HospitalAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C26BB15F23DE08E400C9001D /* HospitalAppTests.swift */; };
 		C26BB17623DE0F7500C9001D /* HospitalsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C26BB17523DE0F7500C9001D /* HospitalsViewController.swift */; };
 		C26BB17823DE0F9600C9001D /* HospitalDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C26BB17723DE0F9600C9001D /* HospitalDetailsViewController.swift */; };
 		C26BB17A23DE11A000C9001D /* HospitalService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C26BB17923DE11A000C9001D /* HospitalService.swift */; };
@@ -27,6 +26,10 @@
 		C26BB18A23DE35E500C9001D /* HospitalsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C26BB18923DE35E500C9001D /* HospitalsViewModel.swift */; };
 		C26BB18C23DE37FA00C9001D /* HospitalTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C26BB18B23DE37FA00C9001D /* HospitalTableViewCell.swift */; };
 		C26BB18E23DE389900C9001D /* HospitalTableViewCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C26BB18D23DE389900C9001D /* HospitalTableViewCellViewModel.swift */; };
+		C26BB19023DE3D5800C9001D /* HospitalDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C26BB18F23DE3D5800C9001D /* HospitalDetailsViewModel.swift */; };
+		C26BB19323DE400F00C9001D /* DKCSVExtractorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C26BB19223DE400F00C9001D /* DKCSVExtractorTests.swift */; };
+		C26BB19523DE453B00C9001D /* Hospital.csv in Resources */ = {isa = PBXBuildFile; fileRef = C26BB19423DE453B00C9001D /* Hospital.csv */; };
+		C26BB19623DE453B00C9001D /* Hospital.csv in Resources */ = {isa = PBXBuildFile; fileRef = C26BB19423DE453B00C9001D /* Hospital.csv */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,7 +52,6 @@
 		C26BB15423DE08E400C9001D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C26BB15623DE08E400C9001D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C26BB15B23DE08E400C9001D /* HospitalAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HospitalAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		C26BB15F23DE08E400C9001D /* HospitalAppTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HospitalAppTests.swift; sourceTree = "<group>"; };
 		C26BB16123DE08E400C9001D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C26BB17523DE0F7500C9001D /* HospitalsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HospitalsViewController.swift; sourceTree = "<group>"; };
 		C26BB17723DE0F9600C9001D /* HospitalDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HospitalDetailsViewController.swift; sourceTree = "<group>"; };
@@ -64,6 +66,9 @@
 		C26BB18923DE35E500C9001D /* HospitalsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HospitalsViewModel.swift; sourceTree = "<group>"; };
 		C26BB18B23DE37FA00C9001D /* HospitalTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HospitalTableViewCell.swift; sourceTree = "<group>"; };
 		C26BB18D23DE389900C9001D /* HospitalTableViewCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HospitalTableViewCellViewModel.swift; sourceTree = "<group>"; };
+		C26BB18F23DE3D5800C9001D /* HospitalDetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HospitalDetailsViewModel.swift; sourceTree = "<group>"; };
+		C26BB19223DE400F00C9001D /* DKCSVExtractorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DKCSVExtractorTests.swift; sourceTree = "<group>"; };
+		C26BB19423DE453B00C9001D /* Hospital.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Hospital.csv; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -119,7 +124,7 @@
 		C26BB15E23DE08E400C9001D /* HospitalAppTests */ = {
 			isa = PBXGroup;
 			children = (
-				C26BB15F23DE08E400C9001D /* HospitalAppTests.swift */,
+				C26BB19123DE3FE900C9001D /* HelperTests */,
 				C26BB16123DE08E400C9001D /* Info.plist */,
 			);
 			path = HospitalAppTests;
@@ -178,6 +183,7 @@
 				C26BB18723DE218700C9001D /* DataLoaderViewModel.swift */,
 				C26BB18923DE35E500C9001D /* HospitalsViewModel.swift */,
 				C26BB18D23DE389900C9001D /* HospitalTableViewCellViewModel.swift */,
+				C26BB18F23DE3D5800C9001D /* HospitalDetailsViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -220,10 +226,19 @@
 		C26BB17423DE0ADE00C9001D /* Support */ = {
 			isa = PBXGroup;
 			children = (
+				C26BB19423DE453B00C9001D /* Hospital.csv */,
 				C26BB15623DE08E400C9001D /* Info.plist */,
 				C26BB15123DE08E400C9001D /* Assets.xcassets */,
 			);
 			path = Support;
+			sourceTree = "<group>";
+		};
+		C26BB19123DE3FE900C9001D /* HelperTests */ = {
+			isa = PBXGroup;
+			children = (
+				C26BB19223DE400F00C9001D /* DKCSVExtractorTests.swift */,
+			);
+			path = HelperTests;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -309,6 +324,7 @@
 			files = (
 				C26BB15523DE08E400C9001D /* LaunchScreen.storyboard in Resources */,
 				C26BB15223DE08E400C9001D /* Assets.xcassets in Resources */,
+				C26BB19523DE453B00C9001D /* Hospital.csv in Resources */,
 				C26BB15023DE08E100C9001D /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -317,6 +333,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C26BB19623DE453B00C9001D /* Hospital.csv in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -327,6 +344,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C26BB19023DE3D5800C9001D /* HospitalDetailsViewModel.swift in Sources */,
 				C26BB14D23DE08E100C9001D /* DataLoaderViewController.swift in Sources */,
 				C26BB17C23DE11C400C9001D /* ServiceRequestable.swift in Sources */,
 				C26BB18E23DE389900C9001D /* HospitalTableViewCellViewModel.swift in Sources */,
@@ -350,7 +368,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C26BB16023DE08E400C9001D /* HospitalAppTests.swift in Sources */,
+				C26BB19323DE400F00C9001D /* DKCSVExtractorTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

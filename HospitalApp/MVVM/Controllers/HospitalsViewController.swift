@@ -38,6 +38,18 @@ class HospitalsViewController: UIViewController {
         super.viewDidLoad()
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        switch segue.identifier {
+        case HospitalsViewControllerSegues.hospitalDetailsSegue:
+            guard let selectedHospital = selectedHospital else { fatalError("Unable to get selected hospital") }
+            
+            let viewController = segue.destination as! HospitalDetailsViewController
+            viewController.viewModel = HospitalDetailsViewModel(with: selectedHospital)
+        default:
+            break
+        }
+    }
+    
     // MARK: IBAction
     @IBAction func switchValueDidChange(_ sender: UISwitch) {
         if sender.isOn {
