@@ -20,6 +20,7 @@
 		C26BB17C23DE11C400C9001D /* ServiceRequestable.swift in Sources */ = {isa = PBXBuildFile; fileRef = C26BB17B23DE11C400C9001D /* ServiceRequestable.swift */; };
 		C26BB17E23DE11EA00C9001D /* ServiceParsable.swift in Sources */ = {isa = PBXBuildFile; fileRef = C26BB17D23DE11EA00C9001D /* ServiceParsable.swift */; };
 		C26BB18023DE134B00C9001D /* DKCSVExtractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = C26BB17F23DE134B00C9001D /* DKCSVExtractor.swift */; };
+		C26BB18223DE177000C9001D /* Hospital.swift in Sources */ = {isa = PBXBuildFile; fileRef = C26BB18123DE177000C9001D /* Hospital.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,6 +51,7 @@
 		C26BB17B23DE11C400C9001D /* ServiceRequestable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceRequestable.swift; sourceTree = "<group>"; };
 		C26BB17D23DE11EA00C9001D /* ServiceParsable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceParsable.swift; sourceTree = "<group>"; };
 		C26BB17F23DE134B00C9001D /* DKCSVExtractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DKCSVExtractor.swift; sourceTree = "<group>"; };
+		C26BB18123DE177000C9001D /* Hospital.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Hospital.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -152,6 +154,7 @@
 		C26BB16E23DE0AA700C9001D /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				C26BB18123DE177000C9001D /* Hospital.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -309,6 +312,7 @@
 				C26BB14D23DE08E100C9001D /* DataLoaderViewController.swift in Sources */,
 				C26BB17C23DE11C400C9001D /* ServiceRequestable.swift in Sources */,
 				C26BB17A23DE11A000C9001D /* HospitalService.swift in Sources */,
+				C26BB18223DE177000C9001D /* Hospital.swift in Sources */,
 				C26BB17E23DE11EA00C9001D /* ServiceParsable.swift in Sources */,
 				C26BB14923DE08E100C9001D /* AppDelegate.swift in Sources */,
 				C26BB18023DE134B00C9001D /* DKCSVExtractor.swift in Sources */,
