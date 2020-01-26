@@ -44,4 +44,39 @@ struct DKCSVExtractor {
             }
         }
     }
+    
+    public func getAllHeadersAndRows(completion:@escaping([[String:String]]?) -> Void) {
+        DispatchQueue.global().async {
+            var allHeadersAndRows = [[String:String]]()
+            self.getAllHeaders { (allHeaders) in
+                if let allHeaders = allHeaders {
+                    self.getAllRows { (allRows) in
+                        if let allRows = allRows {
+                            for row in allRows.enumerated() {
+                                let columns = row.element.split(separator: self.delimiter, maxSplits: Int.max, omittingEmptySubsequences: false).map(String.init)
+                                var columnAndRowDictionary = [String:String]()
+                                for (index, column) in columns.enumerated() {
+                                    columnAndRowDictionary[allHeaders[index]] = column
+                                }
+                                allHeadersAndRows.append(columnAndRowDictionary)
+                            }
+                            DispatchQueue.main.async {
+                                completion(allHeadersAndRows)
+                            }
+                        }
+                        else {
+                            DispatchQueue.main.async {
+                                completion(nil)
+                            }
+                        }
+                    }
+                }
+                else {
+                    DispatchQueue.main.async {
+                        completion(nil)
+                    }
+                }
+            }
+        }
+    }
 }
