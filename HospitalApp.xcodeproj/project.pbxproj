@@ -79,13 +79,13 @@
 		C26BB14723DE08E100C9001D /* HospitalApp */ = {
 			isa = PBXGroup;
 			children = (
-				C26BB14823DE08E100C9001D /* AppDelegate.swift */,
-				C26BB14A23DE08E100C9001D /* SceneDelegate.swift */,
-				C26BB14C23DE08E100C9001D /* ViewController.swift */,
-				C26BB14E23DE08E100C9001D /* Main.storyboard */,
-				C26BB15123DE08E400C9001D /* Assets.xcassets */,
-				C26BB15323DE08E400C9001D /* LaunchScreen.storyboard */,
-				C26BB15623DE08E400C9001D /* Info.plist */,
+				C26BB16A23DE0A7500C9001D /* AppDelegate */,
+				C26BB16B23DE0A8600C9001D /* Helpers */,
+				C26BB16C23DE0A9600C9001D /* MVVM */,
+				C26BB17123DE0AC000C9001D /* Protocols */,
+				C26BB17223DE0AC900C9001D /* SceneDelegate */,
+				C26BB17323DE0AD400C9001D /* Storyboards */,
+				C26BB17423DE0ADE00C9001D /* Support */,
 			);
 			path = HospitalApp;
 			sourceTree = "<group>";
@@ -97,6 +97,94 @@
 				C26BB16123DE08E400C9001D /* Info.plist */,
 			);
 			path = HospitalAppTests;
+			sourceTree = "<group>";
+		};
+		C26BB16A23DE0A7500C9001D /* AppDelegate */ = {
+			isa = PBXGroup;
+			children = (
+				C26BB14823DE08E100C9001D /* AppDelegate.swift */,
+			);
+			path = AppDelegate;
+			sourceTree = "<group>";
+		};
+		C26BB16B23DE0A8600C9001D /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		C26BB16C23DE0A9600C9001D /* MVVM */ = {
+			isa = PBXGroup;
+			children = (
+				C26BB17023DE0AB700C9001D /* Views */,
+				C26BB16F23DE0AAE00C9001D /* ViewModels */,
+				C26BB16E23DE0AA700C9001D /* Models */,
+				C26BB16D23DE0AA000C9001D /* Controllers */,
+			);
+			path = MVVM;
+			sourceTree = "<group>";
+		};
+		C26BB16D23DE0AA000C9001D /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				C26BB14C23DE08E100C9001D /* ViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		C26BB16E23DE0AA700C9001D /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		C26BB16F23DE0AAE00C9001D /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		C26BB17023DE0AB700C9001D /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		C26BB17123DE0AC000C9001D /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
+		C26BB17223DE0AC900C9001D /* SceneDelegate */ = {
+			isa = PBXGroup;
+			children = (
+				C26BB14A23DE08E100C9001D /* SceneDelegate.swift */,
+			);
+			path = SceneDelegate;
+			sourceTree = "<group>";
+		};
+		C26BB17323DE0AD400C9001D /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				C26BB14E23DE08E100C9001D /* Main.storyboard */,
+				C26BB15323DE08E400C9001D /* LaunchScreen.storyboard */,
+			);
+			path = Storyboards;
+			sourceTree = "<group>";
+		};
+		C26BB17423DE0ADE00C9001D /* Support */ = {
+			isa = PBXGroup;
+			children = (
+				C26BB15623DE08E400C9001D /* Info.plist */,
+				C26BB15123DE08E400C9001D /* Assets.xcassets */,
+			);
+			path = Support;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -364,7 +452,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = VS2HTA2LUW;
-				INFOPLIST_FILE = HospitalApp/Info.plist;
+				INFOPLIST_FILE = HospitalApp/Support/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -382,7 +470,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = VS2HTA2LUW;
-				INFOPLIST_FILE = HospitalApp/Info.plist;
+				INFOPLIST_FILE = HospitalApp/Support/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
