@@ -8,7 +8,75 @@
 
 import Foundation
 
-public class HospitalService {
+public class HospitalService: ServiceRequestable, ServiceParsable {
+    // MARK: - Protocol conformance
+    public var endPoint: URL {
+        guard let url = URL(string: "https://media.nhschoices.nhs.uk/data/foi/Hospital.csv") else { fatalError("Unable to prepare URL")}
+        return url
+    }
+    
+    public func parse(data: Data, completed: @escaping ([Hospital]?) -> Void) {
+        DispatchQueue.global().async {
+            if let csvString = String(data: data, encoding: .ascii) {
+                let csvExtractor = DKCSVExtractor(csv: csvString, delimiter: "¬")
+                csvExtractor.getAllHeadersAndRows { (headersAndRows) in
+                    if let headersAndRows = headersAndRows {
+                        let hospitals = headersAndRows.map(Hospital.init)
+                        DispatchQueue.main.async {
+                            completed(hospitals)
+                        }
+                    }
+                }
+            } else {
+                DispatchQueue.main.async {
+                    completed(nil)
+                }
+            }
+        }
+    }
+    
+    public func requestData(completed: @escaping (Data?) -> Void) {
+        DispatchQueue.global().async { [weak self] in
+            guard let self = self else { completed(nil); return }
+            let task = URLSession.shared.downloadTask(with: self.endPoint) { localURL, urlResponse, error in
+                // Load local data if error getting remote data
+                if let _ = error {
+                    self.loadLocalData {(data) in
+                        DispatchQueue.main.async {
+                            completed(data)
+                        }
+                    }
+                }
+                // Check for correct response
+                if let urlResponse = urlResponse {
+                    let response = urlResponse as! HTTPURLResponse
+                    switch (response.statusCode) {
+                    case 200 ... 299:
+                        if let localURL = localURL {
+                            if let data = try? Data(contentsOf: localURL) {
+                                DispatchQueue.main.async {
+                                    completed(data)
+                                }
+                            } else {
+                                self.loadLocalData {(data) in
+                                    DispatchQueue.main.async {
+                                        completed(data)
+                                    }
+                                }
+                            }
+                        }
+                    default:
+                        self.loadLocalData {(data) in
+                            DispatchQueue.main.async {
+                                completed(data)
+                            }
+                        }
+                        break
+                    }
+                }}
+            task.resume()
+        }
+    }
     
     // MARK: - Private methods
     private func loadLocalData(_ completed:@escaping(Data?) -> Void) {

@@ -14,7 +14,42 @@
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7hb-Nb-UQt" customClass="DataLoaderView" customModule="HospitalApp" customModuleProvider="target">
+                                <rect key="frame" x="8" y="348" width="398" height="200"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Loading data, please wait..." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2qn-cs-E38">
+                                        <rect key="frame" x="0.0" y="138.5" width="398" height="24"/>
+                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="9Ot-kp-wlZ">
+                                        <rect key="frame" x="180.5" y="81.5" width="37" height="37"/>
+                                    </activityIndicatorView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="2qn-cs-E38" firstAttribute="centerX" secondItem="9Ot-kp-wlZ" secondAttribute="centerX" id="Co1-Qs-6VJ"/>
+                                    <constraint firstItem="9Ot-kp-wlZ" firstAttribute="centerX" secondItem="7hb-Nb-UQt" secondAttribute="centerX" id="Tx9-3J-XbC"/>
+                                    <constraint firstAttribute="height" constant="200" id="dGc-Tv-Yra"/>
+                                    <constraint firstAttribute="trailing" secondItem="2qn-cs-E38" secondAttribute="trailing" id="gDm-Os-L0w"/>
+                                    <constraint firstItem="2qn-cs-E38" firstAttribute="leading" secondItem="7hb-Nb-UQt" secondAttribute="leading" id="prI-AS-lEL"/>
+                                    <constraint firstItem="9Ot-kp-wlZ" firstAttribute="centerY" secondItem="7hb-Nb-UQt" secondAttribute="centerY" id="vqQ-SH-OCM"/>
+                                    <constraint firstItem="2qn-cs-E38" firstAttribute="top" secondItem="9Ot-kp-wlZ" secondAttribute="bottom" constant="20" id="x7Z-2N-2A2"/>
+                                </constraints>
+                                <connections>
+                                    <outlet property="activityIndicator" destination="9Ot-kp-wlZ" id="ePX-dx-WjZ"/>
+                                    <outlet property="loadingStatusLabel" destination="2qn-cs-E38" id="Boa-lF-kTK"/>
+                                </connections>
+                            </view>
+                        </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="7hb-Nb-UQt" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="70S-oZ-z87"/>
+                            <constraint firstItem="7hb-Nb-UQt" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Erh-2l-o82"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="7hb-Nb-UQt" secondAttribute="trailing" constant="8" id="Rkf-wd-wtO"/>
+                            <constraint firstItem="7hb-Nb-UQt" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="8" id="aHA-q4-bdU"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <navigationItem key="navigationItem" id="GPl-22-qhO"/>
