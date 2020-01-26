@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  DataLoaderViewController.swift
 //  HospitalApp
 //
 //  Created by Donald King on 26/01/2020.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class DataLoaderViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
