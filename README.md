@@ -9,3 +9,6 @@ Simpy download or git clone, checkout develop or master, open xcode project and 
 
 ## Dependencies?
 None.
+
+## Screen recording
+![](hospital_app.gif)
