@@ -12,4 +12,5 @@ public protocol ServiceRequestable {
     associatedtype T
     var endPoint: URL { get }
     func requestData(completed: @escaping (T?) -> Void)
+    func parse(data: Data, completed: @escaping (T?) -> Void)
 }

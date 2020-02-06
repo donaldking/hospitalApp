@@ -17,7 +17,6 @@
 		C26BB17823DE0F9600C9001D /* HospitalDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C26BB17723DE0F9600C9001D /* HospitalDetailsViewController.swift */; };
 		C26BB17A23DE11A000C9001D /* HospitalService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C26BB17923DE11A000C9001D /* HospitalService.swift */; };
 		C26BB17C23DE11C400C9001D /* ServiceRequestable.swift in Sources */ = {isa = PBXBuildFile; fileRef = C26BB17B23DE11C400C9001D /* ServiceRequestable.swift */; };
-		C26BB17E23DE11EA00C9001D /* ServiceParsable.swift in Sources */ = {isa = PBXBuildFile; fileRef = C26BB17D23DE11EA00C9001D /* ServiceParsable.swift */; };
 		C26BB18023DE134B00C9001D /* DKCSVExtractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = C26BB17F23DE134B00C9001D /* DKCSVExtractor.swift */; };
 		C26BB18223DE177000C9001D /* Hospital.swift in Sources */ = {isa = PBXBuildFile; fileRef = C26BB18123DE177000C9001D /* Hospital.swift */; };
 		C26BB18423DE1D7500C9001D /* DataLoaderModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C26BB18323DE1D7500C9001D /* DataLoaderModel.swift */; };
@@ -57,7 +56,6 @@
 		C26BB17723DE0F9600C9001D /* HospitalDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HospitalDetailsViewController.swift; sourceTree = "<group>"; };
 		C26BB17923DE11A000C9001D /* HospitalService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HospitalService.swift; sourceTree = "<group>"; };
 		C26BB17B23DE11C400C9001D /* ServiceRequestable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceRequestable.swift; sourceTree = "<group>"; };
-		C26BB17D23DE11EA00C9001D /* ServiceParsable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceParsable.swift; sourceTree = "<group>"; };
 		C26BB17F23DE134B00C9001D /* DKCSVExtractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DKCSVExtractor.swift; sourceTree = "<group>"; };
 		C26BB18123DE177000C9001D /* Hospital.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Hospital.swift; sourceTree = "<group>"; };
 		C26BB18323DE1D7500C9001D /* DataLoaderModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataLoaderModel.swift; sourceTree = "<group>"; };
@@ -201,7 +199,6 @@
 			isa = PBXGroup;
 			children = (
 				C26BB17B23DE11C400C9001D /* ServiceRequestable.swift */,
-				C26BB17D23DE11EA00C9001D /* ServiceParsable.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -350,7 +347,6 @@
 				C26BB18E23DE389900C9001D /* HospitalTableViewCellViewModel.swift in Sources */,
 				C26BB17A23DE11A000C9001D /* HospitalService.swift in Sources */,
 				C26BB18223DE177000C9001D /* Hospital.swift in Sources */,
-				C26BB17E23DE11EA00C9001D /* ServiceParsable.swift in Sources */,
 				C26BB14923DE08E100C9001D /* AppDelegate.swift in Sources */,
 				C26BB18023DE134B00C9001D /* DKCSVExtractor.swift in Sources */,
 				C26BB17623DE0F7500C9001D /* HospitalsViewController.swift in Sources */,
