@@ -8,7 +8,8 @@
 
 import Foundation
 
-public class HospitalService: ServiceRequestable, ServiceParsable {
+public class HospitalService: ServiceRequestable {
+    private var delimiter: String.Element = "¬";
     public typealias T = [Hospital]
 
     public var endPoint: URL {
@@ -30,7 +31,9 @@ public class HospitalService: ServiceRequestable, ServiceParsable {
                                 }
                             }
                         } else {
-                            completed(nil)
+                            DispatchQueue.main.async {
+                                completed(nil)
+                            }
                         }
                     }
                 }
@@ -54,8 +57,16 @@ public class HospitalService: ServiceRequestable, ServiceParsable {
                         }
                     default:
                         self.loadLocalData {(data) in
-                            DispatchQueue.main.async {
-                                completed(nil)
+                            if let data = data {
+                                self.parse(data: data) {(hospitals) in
+                                    DispatchQueue.main.async {
+                                        completed(hospitals)
+                                    }
+                                }
+                            } else {
+                                DispatchQueue.main.async {
+                                    completed(nil)
+                                }
                             }
                         }
                         break
@@ -66,20 +77,27 @@ public class HospitalService: ServiceRequestable, ServiceParsable {
     }
 
     public func parse(data: Data, completed: @escaping ([Hospital]?) -> Void) {
-        DispatchQueue.global().async {
-            if let csvString = String(data: data, encoding: .ascii) {
-                let csvExtractor = DKCSVExtractor(csv: csvString, delimiter: "¬")
-                csvExtractor.getAllHeadersAndRows { (headersAndRows) in
-                    if let headersAndRows = headersAndRows {
-                        let hospitals = headersAndRows.map(Hospital.init)
+        DispatchQueue.global().async {[weak self] in
+            if let self = self {
+                    if let csvString = String(data: data, encoding: .ascii) {
+                        let csvExtractor = DKCSVExtractor(csv: csvString, delimiter: self.delimiter)
+                        csvExtractor.getAllHeadersAndRows { (headersAndRows) in
+                            if let headersAndRows = headersAndRows {
+                                let hospitals = headersAndRows.map(Hospital.init)
+                                DispatchQueue.main.async {
+                                    completed(hospitals)
+                                }
+                            }
+                        }
+                    } else {
                         DispatchQueue.main.async {
-                            completed(hospitals)
+                            completed(nil)
                         }
                     }
                 }
-            } else {
-                DispatchQueue.main.async {
-                    completed(nil)
+                else {
+                    DispatchQueue.main.async {
+                        fatalError("Self is nil")
                 }
             }
         }
@@ -95,7 +113,9 @@ public class HospitalService: ServiceRequestable, ServiceParsable {
                         completed(data)
                     }
                 } else {
-                    completed(nil)
+                    DispatchQueue.main.async {
+                        completed(nil)
+                    }
                 }
             } catch {
                 DispatchQueue.main.async {
