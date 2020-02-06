@@ -18,7 +18,7 @@ public class HospitalService: ServiceRequestable {
     }
 
     public func requestData(completed: @escaping ([Hospital]?) -> Void) {
-                DispatchQueue.global().async { [weak self] in
+        DispatchQueue.global().async { [weak self] in
             guard let self = self else { completed(nil); return }
             let task = URLSession.shared.downloadTask(with: self.endPoint) { localURL, urlResponse, error in
                 // Load local data if error getting remote data
