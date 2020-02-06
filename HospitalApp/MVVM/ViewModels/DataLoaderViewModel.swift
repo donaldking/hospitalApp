@@ -35,7 +35,7 @@ private enum LoadingStatus: String {
 public class DataLoaderViewModel {
     // MARK: - Private properties
     private var model: DataLoaderModel = DataLoaderModel(hospitals: [])
-    private var service: ServiceRequestable?
+    private var service: HospitalService?
     private var dataLoaderView: DataLoaderView?
     private var loadingState: LoadingStatus = .notLoading {
         didSet {
@@ -61,7 +61,7 @@ public class DataLoaderViewModel {
     
     // MARK: - Custom init
     init(dataLoaderView: DataLoaderView,
-         service: ServiceRequestable) {
+         service: HospitalService) {
         self.dataLoaderView = dataLoaderView
         self.service = service
     }
@@ -94,36 +94,19 @@ public class DataLoaderViewModel {
     private func updateLoadingStatus(with message: String) {
         self.dataLoaderView?.loadingStatusLabel.text = message
     }
-    
+
     private func loadHospitalData(completed: @escaping([Hospital]?)->Void) {
         if let service = service {
-            service.requestData {[weak self] (data) in
-                if let self = self {
-                    if let data = data {
-                        if let hospitalService = service as? HospitalService {
-                            hospitalService.parse(data: data) { (hospitals) in
-                                self.model.hospitals = hospitals
-                                completed(self.model.hospitals)
-                            }
-                        }
-                        else {
-                            self.loadingState = .completedWithNoData
-                            completed(nil)
-                        }
-                    }
-                    else {
-                        self.loadingState = .completedWithNoData
-                        completed(nil)
-                    }
-                }
-                else {
-                    fatalError("self is nil.")
+            service.requestData { (hospitals) in
+                if let hospitals = hospitals {
+                    completed(hospitals)
+                } else {
+                    self.loadingState = .completedWithNoData
+                    completed(nil)
                 }
             }
-        }
-        else {
-            self.loadingState = .completedWithNoData
-            completed(nil)
+        } else {
+            fatalError("Service is nil")
         }
     }
 }

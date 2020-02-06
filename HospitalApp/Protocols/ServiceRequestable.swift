@@ -9,6 +9,7 @@
 import Foundation
 
 public protocol ServiceRequestable {
+    associatedtype T
     var endPoint: URL { get }
-    func requestData(completed: @escaping (Data?) -> Void)
+    func requestData(completed: @escaping (T?) -> Void)
 }
