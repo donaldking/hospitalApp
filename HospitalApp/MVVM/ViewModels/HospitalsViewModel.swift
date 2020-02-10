@@ -9,46 +9,33 @@
 import Foundation
 
 protocol HospitalsViewModelDelegate {
-    func hospitalViewModel(_ hospitalViewModel: HospitalsViewModel, didUpdate hospitals: [Hospital]?)
+    func hospitalViewModelDidUpdate()
 }
+enum FilterOption {
+    case sector
+    case subType
+}
+
 class HospitalsViewModel {
-    // MARK: - Private properties
-    private var originalCopy: [Hospital]?
-    private var hospitals: [Hospital]?
-    
     // MARK: - Public properties
     var delegate: HospitalsViewModelDelegate?
     
-    // MARK: init
-    init(hospitals: [Hospital]) {
-        self.hospitals = hospitals
-        self.originalCopy = hospitals
-    }
-    
     // MARK: - Public methods
     func allHospitals() -> [Hospital]? {
-        return self.hospitals
+        return HospitalBridge.allHospitals()
     }
     
     func hospital(at index: Int) -> Hospital? {
-        if let hospitals = hospitals {
-            if index < hospitals.count {
-                return hospitals[index]
-            } else {
-                return nil
-            }
-        } else {
-            return nil
-        }
+        return HospitalBridge.hospitalAt(index: index)
     }
     
-    func filter(by key: String) {
-        self.hospitals = self.originalCopy?.filter{ $0.sector == key }
-        self.delegate?.hospitalViewModel(self, didUpdate: self.hospitals)
+    func filter(by option: FilterOption, value: String) {
+        HospitalBridge.filter(by: option, value: value)
+        self.delegate?.hospitalViewModelDidUpdate()
     }
-    
+
     func resetFilter() {
-        self.hospitals = self.originalCopy
-        self.delegate?.hospitalViewModel(self, didUpdate: self.hospitals)
+        HospitalBridge.resetFilter()
+        self.delegate?.hospitalViewModelDidUpdate()
     }
 }

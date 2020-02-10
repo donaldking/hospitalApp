@@ -9,7 +9,6 @@
 import UIKit
 
 class HospitalTableViewCell: UITableViewCell {
-
     // MARK: - IBOutlets
     @IBOutlet weak var organisationNameLabel: UILabel!
     @IBOutlet weak var subTypeLabel: UILabel!

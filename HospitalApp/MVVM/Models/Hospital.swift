@@ -34,28 +34,28 @@ public struct Hospital {
     private let faxKey = "Fax"
     
     // MARK: - Public properties
-    private (set) var organisationID: String?
-    private (set) var organisationCode: String?
-    private (set) var organisationType: String?
-    private (set) var subType: String?
-    private (set) var sector: String?
-    private (set) var organisationStatus: String?
-    private (set) var isPimsManaged: String?
-    private (set) var organisationName: String?
-    private (set) var address1: String?
-    private (set) var address2: String?
-    private (set) var address3: String?
-    private (set) var city: String?
-    private (set) var county: String?
-    private (set) var postcode: String?
-    private (set) var latitude: String?
-    private (set) var longitude: String?
-    private (set) var parentODSCode: String?
-    private (set) var parentName: String?
-    private (set) var phone: String?
-    private (set) var email: String?
-    private (set) var website: String?
-    private (set) var fax: String?
+    var organisationID: String?
+    var organisationCode: String?
+    var organisationType: String?
+    var subType: String?
+    public var sector: String?
+    var organisationStatus: String?
+    var isPimsManaged: String?
+    var organisationName: String?
+    var address1: String?
+    var address2: String?
+    var address3: String?
+    var city: String?
+    var county: String?
+    var postcode: String?
+    var latitude: String?
+    var longitude: String?
+    var parentODSCode: String?
+    var parentName: String?
+    var phone: String?
+    var email: String?
+    var website: String?
+    var fax: String?
     
     // MARK: - init
     public init(with dictionary: [String:String]) {
@@ -82,8 +82,37 @@ public struct Hospital {
         self.website = dictionary[websiteKey]
         self.fax = dictionary[faxKey]
     }
+    public init(organisationID: String?,organisationCode: String?,organisationType: String?,
+                subType: String?,sector: String?,organisationStatus: String?,
+                isPimsManaged: String?,organisationName: String?,address1: String?,
+                address2: String?,address3: String?,city: String?,county: String?,
+                postcode: String?,latitude: String?,longitude: String?,parentODSCode: String?,
+                parentName: String?,phone: String?,email: String?,website: String?,fax: String?) {
+        self.organisationID = organisationID
+        self.organisationCode = organisationCode
+        self.organisationType = organisationType
+        self.subType = subType
+        self.sector = sector
+        self.organisationStatus = organisationStatus
+        self.isPimsManaged = isPimsManaged
+        self.organisationName = organisationName
+        self.address1 = address1
+        self.address2 = address2
+        self.address3 = address3
+        self.city = city
+        self.county = county
+        self.postcode = postcode
+        self.latitude = latitude
+        self.longitude = longitude
+        self.parentODSCode = parentODSCode
+        self.parentName = parentName
+        self.phone = phone
+        self.email = email
+        self.website = website
+        self.fax = fax
+    }
     
-    // Making sure this struct can only be initialised with [String : String]
-    @available(*, unavailable, message: "Please use init with [String : String]")
+    // Making sure this struct can only be initialised with [String : String] or all its parameters
+    @available(*, unavailable, message: "Please use the available initializers")
     init() {}
 }

@@ -8,96 +8,69 @@
 
 import Foundation
 
-public class HospitalService: ServiceRequestable {
-    private var delimiter: String.Element = "¬";
+public class HospitalService: ServiceResource {
+    private var remoteDataDelimiter: String.Element = "¬";
+    private var localDataDelimiter: String.Element = "\t"
+    
+    // MARK: - Protocol implementation
     public typealias T = [Hospital]
-
-    public var endPoint: URL {
-        guard let url = URL(string: "https://media.nhschoices.nhs.uk/data/foi/Hospital.csv") else { fatalError("Unable to prepare URL")}
+    public var url: URL {
+        guard let url = URL(string: "https://media.nhschoices.nhs.uk/data/foi/Hospital.csv") else { fatalError("URL is invalid")}
+        
         return url
     }
-
-    public func requestData(completed: @escaping ([Hospital]?) -> Void) {
-        DispatchQueue.global().async { [weak self] in
-            guard let self = self else { completed(nil); return }
-            let task = URLSession.shared.downloadTask(with: self.endPoint) { localURL, urlResponse, error in
-                // Load local data if error getting remote data
-                if let _ = error {
-                    self.loadLocalData {(data) in
-                        if let data = data {
-                            self.parse(data: data) { (hospitals) in
-                                DispatchQueue.main.async {
-                                    completed(hospitals)
-                                }
-                            }
+    
+    public func parse(data: Data, success: @escaping () -> Void, failure: @escaping () -> Void) {
+        if let csvString = String(data: data, encoding: .ascii) {
+            let csvExtractor = DKCSVExtractor(csv: csvString, delimiter: self.remoteDataDelimiter)
+            csvExtractor.getAllHeadersAndRows { (headersAndRows) in
+                
+                if let headersAndRows = headersAndRows {
+                        var hospitals = headersAndRows.map(Hospital.init)
+                        if let _ = try? HospitalBridge.save(hospitals: &hospitals) {
+                            success()
                         } else {
-                            DispatchQueue.main.async {
-                                completed(nil)
+                            self.loadLocalData { (data) in
+                                if let data = data,
+                                    let csvString = String(data: data, encoding: .ascii) {
+                                    let csvExtractor = DKCSVExtractor(csv: csvString, delimiter: self.localDataDelimiter)
+                                    csvExtractor.getAllHeadersAndRows { (headersAndRows) in
+                                        if let headersAndRows = headersAndRows {
+                                                var hospitals = headersAndRows.map(Hospital.init)
+                                                if let _ = try? HospitalBridge.save(hospitals: &hospitals) {
+                                                    success()
+                                                } else {
+                                                    failure()
+                                                }
+                                            }
+                                        }
+                                    } else {
+                                    failure()
+                                }
                             }
-                        }
                     }
                 }
-                // Check for correct response
-                if let urlResponse = urlResponse {
-                    let response = urlResponse as! HTTPURLResponse
-                    switch (response.statusCode) {
-                    case 200 ... 299:
-                        if let localURL = localURL {
-                            if let data = try? Data(contentsOf: localURL) {
-                                self.parse(data: data) { (hospitals) in
-                                    DispatchQueue.main.async {
-                                        completed(hospitals)
-                                    }
-                                }
-                            } else {
-                                DispatchQueue.main.async {
-                                    completed(nil)
-                                }
-                            }
-                        }
-                    default:
-                        self.loadLocalData {(data) in
-                            if let data = data {
-                                self.parse(data: data) {(hospitals) in
-                                    DispatchQueue.main.async {
-                                        completed(hospitals)
-                                    }
-                                }
-                            } else {
-                                DispatchQueue.main.async {
-                                    completed(nil)
-                                }
-                            }
-                        }
-                        break
-                    }
-                }}
-            task.resume()
+            }
         }
-    }
 
-    public func parse(data: Data, completed: @escaping ([Hospital]?) -> Void) {
-        DispatchQueue.global().async {[weak self] in
-            if let self = self {
-                    if let csvString = String(data: data, encoding: .ascii) {
-                        let csvExtractor = DKCSVExtractor(csv: csvString, delimiter: self.delimiter)
-                        csvExtractor.getAllHeadersAndRows { (headersAndRows) in
-                            if let headersAndRows = headersAndRows {
-                                let hospitals = headersAndRows.map(Hospital.init)
-                                DispatchQueue.main.async {
-                                    completed(hospitals)
-                                }
+        // Load fallback data
+        else {
+            self.loadLocalData { (data) in
+                if let data = data,
+                    let csvString = String(data: data, encoding: .ascii) {
+                    let csvExtractor = DKCSVExtractor(csv: csvString, delimiter: self.localDataDelimiter)
+                    csvExtractor.getAllHeadersAndRows { (headersAndRows) in
+                        if let headersAndRows = headersAndRows {
+                                var hospitals = headersAndRows.map(Hospital.init)
+                                if let _ = try? HospitalBridge.save(hospitals: &hospitals) {
+                                    success()
+                                } else {
+                                    failure()
                             }
                         }
-                    } else {
-                        DispatchQueue.main.async {
-                            completed(nil)
-                        }
                     }
-                }
-                else {
-                    DispatchQueue.main.async {
-                        fatalError("Self is nil")
+                } else {
+                    failure()
                 }
             }
         }
@@ -105,22 +78,16 @@ public class HospitalService: ServiceRequestable {
 
     // MARK: - Private methods
     private func loadLocalData(_ completed:@escaping(Data?) -> Void) {
-        DispatchQueue.global(qos: .userInitiated).async {
+        DispatchQueue.global().async {
             do {
                 if let fileUrl = Bundle.main.url(forResource: "Hospital", withExtension: "csv") {
                     let data = try Data(contentsOf: fileUrl)
-                    DispatchQueue.main.async {
-                        completed(data)
-                    }
+                    completed(data)
                 } else {
-                    DispatchQueue.main.async {
-                        completed(nil)
-                    }
-                }
-            } catch {
-                DispatchQueue.main.async {
                     completed(nil)
                 }
+            } catch {
+                completed(nil)
             }
         }
     }

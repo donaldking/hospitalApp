@@ -9,7 +9,7 @@
 import Foundation
 
 protocol DataLoaderViewModelDelegate: class {
-    func dataLoaderViewModel(_ dataLoaderViewModel: DataLoaderViewModel, didFinishLoading data: [Hospital]?)
+    func dataLoaderViewModeldidFinishLoading()
 }
 
 private enum LoadingStatus: String {
@@ -34,8 +34,7 @@ private enum LoadingStatus: String {
 
 public class DataLoaderViewModel {
     // MARK: - Private properties
-    private var model: DataLoaderModel = DataLoaderModel(hospitals: [])
-    private var service: HospitalService?
+    private var resource: HospitalService?
     private var dataLoaderView: DataLoaderView?
     private var loadingState: LoadingStatus = .notLoading {
         didSet {
@@ -61,9 +60,9 @@ public class DataLoaderViewModel {
     
     // MARK: - Custom init
     init(dataLoaderView: DataLoaderView,
-         service: HospitalService) {
+         resource: HospitalService) {
         self.dataLoaderView = dataLoaderView
-        self.service = service
+        self.resource = resource
     }
     
     @available(*, unavailable, message: "Please use init with model: webService:")
@@ -76,13 +75,12 @@ public class DataLoaderViewModel {
                 self.loadingState = .loading
                 if let hospitals = hospitals {
                     if hospitals.count > 0 {
-                        self.model.hospitals = hospitals
                         self.loadingState = .completedWithData
                     } else {
                         self.loadingState = .completedWithNoData
                     }
                 }
-                self.delegate?.dataLoaderViewModel(self, didFinishLoading: self.model.hospitals)
+                self.delegate?.dataLoaderViewModeldidFinishLoading()
             }
             else {
                 fatalError("self is nil.")
@@ -94,19 +92,21 @@ public class DataLoaderViewModel {
     private func updateLoadingStatus(with message: String) {
         self.dataLoaderView?.loadingStatusLabel.text = message
     }
-
-    private func loadHospitalData(completed: @escaping([Hospital]?)->Void) {
-        if let service = service {
-            service.requestData { (hospitals) in
-                if let hospitals = hospitals {
-                    completed(hospitals)
-                } else {
-                    self.loadingState = .completedWithNoData
-                    completed(nil)
-                }
+    
+    private func loadHospitalData(completed: @escaping([Hospital]?) -> Void) {
+        guard let resource = self.resource else { return }
+        
+        Webservice.download(resource: resource, success: {
+            if let hospitals = HospitalBridge.allHospitals(),
+                hospitals.count > 0 {
+                self.loadingState = .completedWithData
+                self.delegate?.dataLoaderViewModeldidFinishLoading()
+            } else {
+                self.loadingState = .completedWithNoData
             }
-        } else {
-            fatalError("Service is nil")
+        }) {
+            self.loadingState = .completedWithNoData
+            print("Error loading data..")
         }
     }
 }

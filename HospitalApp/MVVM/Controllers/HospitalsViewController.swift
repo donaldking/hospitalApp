@@ -53,18 +53,23 @@ class HospitalsViewController: UIViewController {
     // MARK: IBAction
     @IBAction func switchValueDidChange(_ sender: UISwitch) {
         if sender.isOn {
-            hospitalsViewModel?.filter(by: nhsSectorFilter)
+            hospitalsViewModel?.filter(by: .sector, value: nhsSectorFilter)
         } else {
             hospitalsViewModel?.resetFilter()
         }
+    }
+    
+    // MARK: - Private methods
+    private func reloadTableView() {
+        print("Total data to load: \(String(describing: hospitalsViewModel?.allHospitals()?.count))")
+        self.tableView.reloadData()
     }
 }
 
 // MARK: - Extensions
 // MARK: - UITableview datasource
 extension HospitalsViewController: UITableViewDataSource {
-    func tableView(_ tableView: UITableView,
-                   numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         guard let rows = hospitalsViewModel?.allHospitals()?.count else { return 0 }
         
         return rows
@@ -73,11 +78,8 @@ extension HospitalsViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let hospital = hospitalsViewModel?.hospital(at: indexPath.row) else { fatalError("Unable to get hospital at index \(indexPath.row)")}
         
-        let hospitalCell = tableView.dequeueReusableCell(withIdentifier: HospitalsViewControllerConstants.hospitalTableViewCell,
-                                                         for: indexPath) as! HospitalTableViewCell
-        
-        let hospitalCellViewModel = HospitalTableViewCellViewModel(with: hospital,
-                                                                   cellView: hospitalCell)
+        let hospitalCell = tableView.dequeueReusableCell(withIdentifier: HospitalsViewControllerConstants.hospitalTableViewCell, for: indexPath) as! HospitalTableViewCell
+        let hospitalCellViewModel = HospitalTableViewCellViewModel(with: hospital, cellView: hospitalCell)
         hospitalCellViewModel.configure()
         
         return hospitalCell
@@ -93,14 +95,13 @@ extension HospitalsViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         self.selectedHospital = hospitalsViewModel?.hospital(at: indexPath.row)
         self.tableView.deselectRow(at: indexPath, animated: true)
-        
         performSegue(withIdentifier: HospitalsViewControllerSegues.hospitalDetailsSegue, sender: self)
     }
 }
 
 // MARK: - Hospital view model delegate
 extension HospitalsViewController: HospitalsViewModelDelegate {
-    func hospitalViewModel(_ hospitalViewModel: HospitalsViewModel, didUpdate hospitals: [Hospital]?) {
-        self.tableView.reloadData()
+    func hospitalViewModelDidUpdate() {
+        reloadTableView()
     }
 }

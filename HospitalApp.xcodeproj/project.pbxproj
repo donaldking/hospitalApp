@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4FBD7BDD23EE2B6500477ED7 /* Webservice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FBD7BDC23EE2B6500477ED7 /* Webservice.swift */; };
+		4FBD7BE423EEDEC300477ED7 /* HospitalDataAccessHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FBD7BE323EEDEC300477ED7 /* HospitalDataAccessHelper.swift */; };
+		4FBD7BE623EEDF2000477ED7 /* HospitalDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FBD7BE523EEDF2000477ED7 /* HospitalDto.swift */; };
+		4FBD7BE823EEDF5400477ED7 /* HospitalBridge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FBD7BE723EEDF5400477ED7 /* HospitalBridge.swift */; };
+		4FBD7BED23EEE1FF00477ED7 /* DataAccessHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FBD7BEC23EEE1FF00477ED7 /* DataAccessHelper.swift */; };
 		C26BB14923DE08E100C9001D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C26BB14823DE08E100C9001D /* AppDelegate.swift */; };
 		C26BB14B23DE08E100C9001D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C26BB14A23DE08E100C9001D /* SceneDelegate.swift */; };
 		C26BB14D23DE08E100C9001D /* DataLoaderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C26BB14C23DE08E100C9001D /* DataLoaderViewController.swift */; };
@@ -16,10 +21,9 @@
 		C26BB17623DE0F7500C9001D /* HospitalsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C26BB17523DE0F7500C9001D /* HospitalsViewController.swift */; };
 		C26BB17823DE0F9600C9001D /* HospitalDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C26BB17723DE0F9600C9001D /* HospitalDetailsViewController.swift */; };
 		C26BB17A23DE11A000C9001D /* HospitalService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C26BB17923DE11A000C9001D /* HospitalService.swift */; };
-		C26BB17C23DE11C400C9001D /* ServiceRequestable.swift in Sources */ = {isa = PBXBuildFile; fileRef = C26BB17B23DE11C400C9001D /* ServiceRequestable.swift */; };
+		C26BB17C23DE11C400C9001D /* ServiceResource.swift in Sources */ = {isa = PBXBuildFile; fileRef = C26BB17B23DE11C400C9001D /* ServiceResource.swift */; };
 		C26BB18023DE134B00C9001D /* DKCSVExtractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = C26BB17F23DE134B00C9001D /* DKCSVExtractor.swift */; };
 		C26BB18223DE177000C9001D /* Hospital.swift in Sources */ = {isa = PBXBuildFile; fileRef = C26BB18123DE177000C9001D /* Hospital.swift */; };
-		C26BB18423DE1D7500C9001D /* DataLoaderModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C26BB18323DE1D7500C9001D /* DataLoaderModel.swift */; };
 		C26BB18623DE1DBD00C9001D /* DataLoaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C26BB18523DE1DBD00C9001D /* DataLoaderView.swift */; };
 		C26BB18823DE218700C9001D /* DataLoaderViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C26BB18723DE218700C9001D /* DataLoaderViewModel.swift */; };
 		C26BB18A23DE35E500C9001D /* HospitalsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C26BB18923DE35E500C9001D /* HospitalsViewModel.swift */; };
@@ -42,6 +46,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		4FBD7BDC23EE2B6500477ED7 /* Webservice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Webservice.swift; sourceTree = "<group>"; };
+		4FBD7BE323EEDEC300477ED7 /* HospitalDataAccessHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HospitalDataAccessHelper.swift; sourceTree = "<group>"; };
+		4FBD7BE523EEDF2000477ED7 /* HospitalDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HospitalDto.swift; sourceTree = "<group>"; };
+		4FBD7BE723EEDF5400477ED7 /* HospitalBridge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HospitalBridge.swift; sourceTree = "<group>"; };
+		4FBD7BEC23EEE1FF00477ED7 /* DataAccessHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataAccessHelper.swift; sourceTree = "<group>"; };
 		C26BB14523DE08E100C9001D /* HospitalApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HospitalApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C26BB14823DE08E100C9001D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C26BB14A23DE08E100C9001D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -55,10 +64,9 @@
 		C26BB17523DE0F7500C9001D /* HospitalsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HospitalsViewController.swift; sourceTree = "<group>"; };
 		C26BB17723DE0F9600C9001D /* HospitalDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HospitalDetailsViewController.swift; sourceTree = "<group>"; };
 		C26BB17923DE11A000C9001D /* HospitalService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HospitalService.swift; sourceTree = "<group>"; };
-		C26BB17B23DE11C400C9001D /* ServiceRequestable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceRequestable.swift; sourceTree = "<group>"; };
+		C26BB17B23DE11C400C9001D /* ServiceResource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceResource.swift; sourceTree = "<group>"; };
 		C26BB17F23DE134B00C9001D /* DKCSVExtractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DKCSVExtractor.swift; sourceTree = "<group>"; };
 		C26BB18123DE177000C9001D /* Hospital.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Hospital.swift; sourceTree = "<group>"; };
-		C26BB18323DE1D7500C9001D /* DataLoaderModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataLoaderModel.swift; sourceTree = "<group>"; };
 		C26BB18523DE1DBD00C9001D /* DataLoaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataLoaderView.swift; sourceTree = "<group>"; };
 		C26BB18723DE218700C9001D /* DataLoaderViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataLoaderViewModel.swift; sourceTree = "<group>"; };
 		C26BB18923DE35E500C9001D /* HospitalsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HospitalsViewModel.swift; sourceTree = "<group>"; };
@@ -87,6 +95,57 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4FBD7BDE23EE2B9B00477ED7 /* Generics */ = {
+			isa = PBXGroup;
+			children = (
+				4FBD7BDC23EE2B6500477ED7 /* Webservice.swift */,
+			);
+			path = Generics;
+			sourceTree = "<group>";
+		};
+		4FBD7BDF23EEDA8700477ED7 /* DataAccessLayer */ = {
+			isa = PBXGroup;
+			children = (
+				4FBD7BEB23EEE16C00477ED7 /* Protocol */,
+				4FBD7BE123EEDBE400477ED7 /* BridgeLayer */,
+				4FBD7BE023EEDBDD00477ED7 /* HelperLayer */,
+				4FBD7BE223EEDBEC00477ED7 /* ModelLayer */,
+			);
+			path = DataAccessLayer;
+			sourceTree = "<group>";
+		};
+		4FBD7BE023EEDBDD00477ED7 /* HelperLayer */ = {
+			isa = PBXGroup;
+			children = (
+				4FBD7BE323EEDEC300477ED7 /* HospitalDataAccessHelper.swift */,
+			);
+			path = HelperLayer;
+			sourceTree = "<group>";
+		};
+		4FBD7BE123EEDBE400477ED7 /* BridgeLayer */ = {
+			isa = PBXGroup;
+			children = (
+				4FBD7BE723EEDF5400477ED7 /* HospitalBridge.swift */,
+			);
+			path = BridgeLayer;
+			sourceTree = "<group>";
+		};
+		4FBD7BE223EEDBEC00477ED7 /* ModelLayer */ = {
+			isa = PBXGroup;
+			children = (
+				4FBD7BE523EEDF2000477ED7 /* HospitalDto.swift */,
+			);
+			path = ModelLayer;
+			sourceTree = "<group>";
+		};
+		4FBD7BEB23EEE16C00477ED7 /* Protocol */ = {
+			isa = PBXGroup;
+			children = (
+				4FBD7BEC23EEE1FF00477ED7 /* DataAccessHelper.swift */,
+			);
+			path = Protocol;
+			sourceTree = "<group>";
+		};
 		C26BB13C23DE08E100C9001D = {
 			isa = PBXGroup;
 			children = (
@@ -108,7 +167,9 @@
 		C26BB14723DE08E100C9001D /* HospitalApp */ = {
 			isa = PBXGroup;
 			children = (
+				4FBD7BDF23EEDA8700477ED7 /* DataAccessLayer */,
 				C26BB16A23DE0A7500C9001D /* AppDelegate */,
+				4FBD7BDE23EE2B9B00477ED7 /* Generics */,
 				C26BB16B23DE0A8600C9001D /* Helpers */,
 				C26BB16C23DE0A9600C9001D /* MVVM */,
 				C26BB17123DE0AC000C9001D /* Protocols */,
@@ -169,7 +230,6 @@
 		C26BB16E23DE0AA700C9001D /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				C26BB18323DE1D7500C9001D /* DataLoaderModel.swift */,
 				C26BB18123DE177000C9001D /* Hospital.swift */,
 			);
 			path = Models;
@@ -198,7 +258,7 @@
 		C26BB17123DE0AC000C9001D /* Protocols */ = {
 			isa = PBXGroup;
 			children = (
-				C26BB17B23DE11C400C9001D /* ServiceRequestable.swift */,
+				C26BB17B23DE11C400C9001D /* ServiceResource.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -343,20 +403,24 @@
 			files = (
 				C26BB19023DE3D5800C9001D /* HospitalDetailsViewModel.swift in Sources */,
 				C26BB14D23DE08E100C9001D /* DataLoaderViewController.swift in Sources */,
-				C26BB17C23DE11C400C9001D /* ServiceRequestable.swift in Sources */,
+				C26BB17C23DE11C400C9001D /* ServiceResource.swift in Sources */,
 				C26BB18E23DE389900C9001D /* HospitalTableViewCellViewModel.swift in Sources */,
 				C26BB17A23DE11A000C9001D /* HospitalService.swift in Sources */,
 				C26BB18223DE177000C9001D /* Hospital.swift in Sources */,
 				C26BB14923DE08E100C9001D /* AppDelegate.swift in Sources */,
+				4FBD7BED23EEE1FF00477ED7 /* DataAccessHelper.swift in Sources */,
 				C26BB18023DE134B00C9001D /* DKCSVExtractor.swift in Sources */,
 				C26BB17623DE0F7500C9001D /* HospitalsViewController.swift in Sources */,
 				C26BB18C23DE37FA00C9001D /* HospitalTableViewCell.swift in Sources */,
 				C26BB18A23DE35E500C9001D /* HospitalsViewModel.swift in Sources */,
+				4FBD7BE423EEDEC300477ED7 /* HospitalDataAccessHelper.swift in Sources */,
 				C26BB18823DE218700C9001D /* DataLoaderViewModel.swift in Sources */,
 				C26BB17823DE0F9600C9001D /* HospitalDetailsViewController.swift in Sources */,
-				C26BB18423DE1D7500C9001D /* DataLoaderModel.swift in Sources */,
 				C26BB14B23DE08E100C9001D /* SceneDelegate.swift in Sources */,
+				4FBD7BE823EEDF5400477ED7 /* HospitalBridge.swift in Sources */,
 				C26BB18623DE1DBD00C9001D /* DataLoaderView.swift in Sources */,
+				4FBD7BE623EEDF2000477ED7 /* HospitalDto.swift in Sources */,
+				4FBD7BDD23EE2B6500477ED7 /* Webservice.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -517,13 +581,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = X7PW49CFU4;
+				DEVELOPMENT_TEAM = JK25G94WHU;
 				INFOPLIST_FILE = HospitalApp/Support/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.tusk.HospitalApp.dk;
+				PRODUCT_BUNDLE_IDENTIFIER = com.tusk.HospitalApp.dk2;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -535,13 +599,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = X7PW49CFU4;
+				DEVELOPMENT_TEAM = JK25G94WHU;
 				INFOPLIST_FILE = HospitalApp/Support/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.tusk.HospitalApp.dk;
+				PRODUCT_BUNDLE_IDENTIFIER = com.tusk.HospitalApp.dk2;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -554,7 +618,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = VS2HTA2LUW;
+				DEVELOPMENT_TEAM = JK25G94WHU;
 				INFOPLIST_FILE = HospitalAppTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -576,7 +640,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = VS2HTA2LUW;
+				DEVELOPMENT_TEAM = JK25G94WHU;
 				INFOPLIST_FILE = HospitalAppTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
 				LD_RUNPATH_SEARCH_PATHS = (
