@@ -171,7 +171,7 @@
 				C26BB16A23DE0A7500C9001D /* AppDelegate */,
 				4FBD7BDE23EE2B9B00477ED7 /* Generics */,
 				C26BB16B23DE0A8600C9001D /* Helpers */,
-				C26BB16C23DE0A9600C9001D /* MVVM */,
+				C26BB16C23DE0A9600C9001D /* MVVMb */,
 				C26BB17123DE0AC000C9001D /* Protocols */,
 				C26BB17223DE0AC900C9001D /* SceneDelegate */,
 				C26BB17323DE0AD400C9001D /* Storyboards */,
@@ -206,7 +206,7 @@
 			path = Helpers;
 			sourceTree = "<group>";
 		};
-		C26BB16C23DE0A9600C9001D /* MVVM */ = {
+		C26BB16C23DE0A9600C9001D /* MVVMb */ = {
 			isa = PBXGroup;
 			children = (
 				C26BB16D23DE0AA000C9001D /* Controllers */,
@@ -214,7 +214,7 @@
 				C26BB16F23DE0AAE00C9001D /* ViewModels */,
 				C26BB17023DE0AB700C9001D /* Views */,
 			);
-			path = MVVM;
+			path = MVVMb;
 			sourceTree = "<group>";
 		};
 		C26BB16D23DE0AA000C9001D /* Controllers */ = {

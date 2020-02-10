@@ -10,7 +10,7 @@ import Foundation
 
 struct HospitalBridge {
     // Bridge should NEVER EVER hold a reference to the DTO's data or instance.
-    // Access to DTO's data should be via a fresh request! using the DataAccessHelper of the Bridge
+    // Access to DTO's data should be via a fresh request! using the DataAccessHelper of the Bridging Type
     
     static func save(hospital: inout Hospital) throws {
         let hospitalDto = toHospitalDto(hospital: hospital)

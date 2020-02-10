@@ -54,7 +54,7 @@ struct HospitalDataAccessHelper: DataAccessHelper {
     }
     
     static func filter<V>(by keyPath: KeyPath<T, V>, value: String) throws -> [T]? {
-        // IMPORTANT: Copy existing data to original copy first
+        // IMPORTANT: Copy existing data to parallelCopy copy first
         parallelCopy = hospitalDto
         
         guard let filteredDtos = try? findAll()?.filter( { $0[keyPath: keyPath] as? String == value } ) else { throw DataAccessError.filterError }
