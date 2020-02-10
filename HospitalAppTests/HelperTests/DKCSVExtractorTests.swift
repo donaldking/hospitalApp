@@ -26,7 +26,7 @@ class DKCSVExtractorTests: XCTestCase {
         let exp = expectation(description: "csvJob")
         self.sut.getAllHeaders { (headers) in
             let count = headers!.count
-            XCTAssertTrue(count == 22, "Headers count should be 22")
+            XCTAssertEqual(count, 22, "Headers count should be 22")
             exp.fulfill()
         }
         wait(for: [exp], timeout: 3)
@@ -36,7 +36,7 @@ class DKCSVExtractorTests: XCTestCase {
         let exp = expectation(description: "csvJob")
         self.sut.getAllRows { (rows) in
             let count = rows!.count
-            XCTAssertTrue(count == 1093, "Rows count should be 1093")
+            XCTAssertEqual(count, 1093, "Rows count should be 1093")
             exp.fulfill()
         }
         wait(for: [exp], timeout: 3)
@@ -46,7 +46,7 @@ class DKCSVExtractorTests: XCTestCase {
         let exp = expectation(description: "csvJob")
         self.sut.getAllHeadersAndRows { (headersAndRows) in
             let count = headersAndRows!.count
-            XCTAssertTrue(count == 1093, "Headers and Rows count should be 1093")
+            XCTAssertEqual(count, 1093, "Headers and Rows count should be 1093")
             exp.fulfill()
         }
         wait(for: [exp], timeout: 3)

@@ -5,6 +5,7 @@
 //  Created by Donald King on 26/01/2020.
 //  Copyright © 2020 Donald King. All rights reserved.
 //
+// Runs in background thread and returns completion in background thread
 
 import Foundation
 
@@ -22,31 +23,26 @@ struct DKCSVExtractor {
     
     // MARK: - Public methods
     public func getAllHeaders(completion: @escaping([String]?) -> Void) {
-        DispatchQueue.global().async {
+        DispatchQueue.global(qos: .background).async {
             if let csvData = self.csv.first {
                 let headers = csvData.split(separator: self.delimiter, maxSplits: Int.max, omittingEmptySubsequences: false).map(String.init)
-                DispatchQueue.main.async {
-                    completion(headers)
-                }
-            }
-            else {
+                completion(headers)
+            } else {
                 completion(nil)
             }
         }
     }
     
     public func getAllRows(completion: @escaping([String]?) -> Void) {
-        DispatchQueue.global().async {
+        DispatchQueue.global(qos: .background).async {
             let allRowsWithoutHeader = self.csv.dropFirst()
             let slice = Array<String>(allRowsWithoutHeader)
-            DispatchQueue.main.async {
-                completion(slice)
-            }
+            completion(slice)
         }
     }
     
     public func getAllHeadersAndRows(completion:@escaping([[String:String]]?) -> Void) {
-        DispatchQueue.global().async {
+        DispatchQueue.global(qos: .background).async {
             var allHeadersAndRows = [[String:String]]()
             self.getAllHeaders { (allHeaders) in
                 if let allHeaders = allHeaders {
@@ -60,21 +56,13 @@ struct DKCSVExtractor {
                                 }
                                 allHeadersAndRows.append(columnAndRowDictionary)
                             }
-                            DispatchQueue.main.async {
-                                completion(allHeadersAndRows)
-                            }
-                        }
-                        else {
-                            DispatchQueue.main.async {
-                                completion(nil)
-                            }
+                            completion(allHeadersAndRows)
+                        } else {
+                            completion(nil)
                         }
                     }
-                }
-                else {
-                    DispatchQueue.main.async {
-                        completion(nil)
-                    }
+                } else {
+                    completion(nil)
                 }
             }
         }

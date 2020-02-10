@@ -16,7 +16,6 @@ private struct DataLoaderViewControllerSegues {
 }
 
 public class DataLoaderViewController: UIViewController {
-    
     // MARK: - IBOutlets
     @IBOutlet private weak var dataLoaderView: DataLoaderView!
     
@@ -44,23 +43,22 @@ public class DataLoaderViewController: UIViewController {
     // MARK: - Private methods
     private func loadData() {
         dataLoaderViewModel = DataLoaderViewModel(dataLoaderView: dataLoaderView,
-                                                  service: HospitalService())
+                                                  resource: HospitalService())
         dataLoaderViewModel?.delegate = self
         dataLoaderViewModel?.loadData()
     }
     
     private func navigateToHospitalsViewController() {
-        perform(#selector(performSegue(withIdentifier:sender:)), with: DataLoaderViewControllerSegues.toHospitalsSegue, afterDelay: 3)
+        Timer.scheduledTimer(withTimeInterval: 3, repeats: false) { (timer) in
+            self.performSegue(withIdentifier: DataLoaderViewControllerSegues.toHospitalsSegue, sender: self)
+        }
     }
 }
 
 // MARK: - Extensions
 extension DataLoaderViewController: DataLoaderViewModelDelegate {
-    func dataLoaderViewModel(_ dataLoaderViewModel: DataLoaderViewModel, didFinishLoading data: [Hospital]?) {
-        // Create hospital view model here with the hospital array and pass it!!
-        if let hospitals = data {
-            hospitalsViewModel = HospitalsViewModel(hospitals: hospitals)
-            navigateToHospitalsViewController()
-        }
+    func dataLoaderViewModeldidFinishLoading() {
+        self.hospitalsViewModel = HospitalsViewModel()
+        self.navigateToHospitalsViewController()
     }
 }
